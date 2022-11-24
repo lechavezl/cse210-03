@@ -23,4 +23,6 @@ class SecretWord:
     
     def show_secret_world(self):
 
-        pass
+        secret_world = self.get_world()
+
+        print("_" * len(secret_world))

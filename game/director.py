@@ -1,4 +1,7 @@
-
+from game.secret_word import SecretWord
+from game.parachute import Parachute
+# from game.player import Player
+from game.terminal_service import TerminalService
 
 
 class Director:
@@ -22,7 +25,7 @@ class Director:
         self._secret_word = SecretWord()
         self._is_playing = True
         self._parachute = Parachute()
-        self._player = Player()
+        # self._player = Player()
         self._terminal_service = TerminalService()
         
     def start_game(self):
@@ -32,9 +35,10 @@ class Director:
             self (Director): an instance of Director.
         """
         while self._is_playing:
-            self._get_inputs()
-            self._do_updates()
-            self._do_outputs()
+            self._secret_word.show_secret_world()
+            # self._get_inputs()
+            # self._do_updates()
+            # self._do_outputs()
 
     def _get_inputs(self):
         """THE COMMENTS HERE.
