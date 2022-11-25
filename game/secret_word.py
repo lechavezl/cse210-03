@@ -7,6 +7,7 @@ class SecretWord:
         self._secret_word = ["class", "january", "border", "image", "film", "promise", "kids", "lungs",
         "doll", "rhyme", "damage", "plants", "dance", "computer", "python", "secret", "plan"]
         self._random_word = random.choice(self._secret_word)
+        already_guessed_word = []
 
     def get_world(self):
         """Get and hold a secret word to display.
@@ -26,3 +27,8 @@ class SecretWord:
         secret_world = self.get_world()
 
         print("_" * len(secret_world))
+    
+    def guess_word(self, guess):
+
+        if guess in self.get_world():
+            already_guessed_word.ex
