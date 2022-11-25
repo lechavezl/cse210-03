@@ -11,50 +11,64 @@ class Parachute:
         this method will cut and display the parachute again.
         """
 
+        parachute = ""
+
         if self._wrong_guesses == 0:
 
-            parachute = """
-              ___
-             /___\\
-             \\   /
-              \\ /
-               o
-              /|\\
-              / \\"""
+            parachute= """
+ ___
+/___\\
+\\   /
+ \\ /
+  o
+ /|\\
+ / \\
+
+^^^^^^^"""
         
         elif self._wrong_guesses == 1:
             parachute = """
-             /___\\
-             \\   /
-              \\ /
-               o
-              /|\\
-              / \\"""
+/___\\
+\\   /
+ \\ /
+  o
+ /|\\
+ / \\
+
+^^^^^^^"""
         
         elif self._wrong_guesses == 2:
             parachute = """
-             \\   /
-              \\ /
-               o
-              /|\\
-              / \\"""
+\\   /
+ \\ /
+  o
+ /|\\
+ / \\
+
+^^^^^^^"""
         
         elif self._wrong_guesses == 3:
             parachute = """
-             \\ /
-               o
-              /|\\
-              / \\"""
+ \\ /
+  o
+ /|\\
+ / \\
+
+^^^^^^^"""
         
         elif self._wrong_guesses == 4:
             parachute = """
-               x
-              /|\\
-              / \\"""
+  x
+ /|\\
+ / \\
+
+^^^^^^^"""
+        
+        return parachute
 
     def cut_parachute(self):
         """Check if the parachue is entirely cut off. If this is true,
         then end the game.
         """
 
-        pass
+        return (self._wrong_guesses == 4)

@@ -34,8 +34,9 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        while self._is_playing:
-            self._secret_word.show_secret_world()
+        self._get_inputs()
+        self._do_outputs()
+        # while self._is_playing:
             # self._get_inputs()
             # self._do_updates()
             # self._do_outputs()
@@ -46,7 +47,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self._secret_word.show_secret_world()
         
     def _do_updates(self):
         """THE COMMENTS HERE.
@@ -63,4 +64,8 @@ class Director:
             self (Director): An instance of Director.
         """
         
-        pass
+        write_parachute = self._parachute.get_parachute()
+        self._terminal_service.write_text(write_parachute)
+
+        if self._parachute.cut_parachute():
+            self._is_playing = False
