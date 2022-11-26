@@ -5,7 +5,7 @@ class Parachute:
         self._wrong_guesses = 0
         # self._parachute = ""
 
-    def get_parachute(self):
+    def get_parachute(self, secret_word):
         """Create the parachute and display it based on the
         player's guesses. If the player make a wrong guesses,
         this method will cut and display the parachute again.
@@ -13,7 +13,7 @@ class Parachute:
 
         parachute = ""
 
-        if self._wrong_guesses == 0:
+        if self._secret_word.self._wrong_guesses == 0:
 
             parachute= """
  ___
@@ -26,7 +26,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._wrong_guesses == 1:
+        elif self._secret_word.self._wrong_guesses == 1:
             parachute = """
 /___\\
 \\   /
@@ -37,7 +37,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._wrong_guesses == 2:
+        elif self._secret_word.self._wrong_guesses == 2:
             parachute = """
 \\   /
  \\ /
@@ -47,7 +47,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._wrong_guesses == 3:
+        elif self._secret_word.self._wrong_guesses == 3:
             parachute = """
  \\ /
   o
@@ -56,7 +56,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._wrong_guesses == 4:
+        elif self._secret_word.self._wrong_guesses == 4:
             parachute = """
   x
  /|\\

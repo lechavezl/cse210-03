@@ -27,6 +27,7 @@ class Director:
         self._parachute = Parachute()
         # self._player = Player()
         self._terminal_service = TerminalService()
+        self._guess = ""
         
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -34,12 +35,12 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._get_inputs()
-        self._do_outputs()
-        # while self._is_playing:
-            # self._get_inputs()
-            # self._do_updates()
-            # self._do_outputs()
+        # self._get_inputs()
+        # self._do_outputs()
+        while self._is_playing:
+            self._get_inputs()
+            self._do_updates()
+            self._do_outputs()
 
     def _get_inputs(self):
         """THE COMMENTS HERE.
@@ -47,7 +48,8 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self._secret_word.show_secret_world()
+        self._guess = self._terminal_service.read_text("Guess a letter [a-z]: ")
+        self._secret_word.show_secret_word()
         
     def _do_updates(self):
         """THE COMMENTS HERE.
@@ -55,7 +57,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self._secret_word.guess_word(self._guess)
         
     def _do_outputs(self):
         """THE COMMENTS HERE.
@@ -63,9 +65,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        self._secret_word.guess_word(self._guess)
         
-        write_parachute = self._parachute.get_parachute()
+        write_parachute = self._parachute.get_parachute(self._secret_word)
         self._terminal_service.write_text(write_parachute)
 
         if self._parachute.cut_parachute():
+            self._is_playing = False
+        
+        elif self._secret_word.guessed_word():
             self._is_playing = False
