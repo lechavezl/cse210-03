@@ -13,7 +13,7 @@ class Parachute:
 
         parachute = ""
 
-        if self._secret_word.self._wrong_guesses == 0:
+        if secret_word._wrong_guesses == 0:
 
             parachute= """
  ___
@@ -26,7 +26,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._secret_word.self._wrong_guesses == 1:
+        elif secret_word._wrong_guesses == 1:
             parachute = """
 /___\\
 \\   /
@@ -37,7 +37,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._secret_word.self._wrong_guesses == 2:
+        elif secret_word._wrong_guesses == 2:
             parachute = """
 \\   /
  \\ /
@@ -47,7 +47,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._secret_word.self._wrong_guesses == 3:
+        elif secret_word._wrong_guesses == 3:
             parachute = """
  \\ /
   o
@@ -56,7 +56,7 @@ class Parachute:
 
 ^^^^^^^"""
         
-        elif self._secret_word.self._wrong_guesses == 4:
+        elif secret_word._wrong_guesses == 4:
             parachute = """
   x
  /|\\
