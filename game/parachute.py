@@ -11,7 +11,16 @@ class Parachute:
         this method will cut and display the parachute again.
         """
 
-        parachute = ""
+        parachute = """
+ ___
+/___\\
+\\   /
+ \\ /
+  o
+ /|\\
+ / \\
+
+^^^^^^^"""
 
         if secret_word._wrong_guesses == 0:
 
