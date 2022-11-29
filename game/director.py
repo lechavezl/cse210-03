@@ -36,9 +36,10 @@ class Director:
             self (Director): an instance of Director.
         """
         while self._is_playing:
+            self._do_outputs()
             self._get_inputs()
             self._do_updates()
-            self._do_outputs()
+            self._end_game()
 
     def _get_inputs(self):
         """THE COMMENTS HERE.
@@ -46,8 +47,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self._terminal_service.write_text(self._secret_word.show_secret_word())
+
         self._guess = self._terminal_service.read_text("Guess a letter [a-z]: ")
+        print()
         
     def _do_updates(self):
         """THE COMMENTS HERE.
@@ -63,12 +65,15 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        
+
+        self._terminal_service.write_text(self._secret_word.show_secret_word())
         write_parachute = self._parachute.get_parachute(self._secret_word)
         self._terminal_service.write_text(write_parachute)
 
         # if self._parachute.cut_parachute():
         #     self._is_playing = False
-        
+    
+    def _end_game(self):
+
         if self._secret_word.guessed_word():
             self._is_playing = False
