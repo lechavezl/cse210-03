@@ -1,6 +1,5 @@
 from game.secret_word import SecretWord
 from game.parachute import Parachute
-# from game.player import Player
 from game.terminal_service import TerminalService
 
 
@@ -10,10 +9,11 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        hider (Hider): The game's hider.
+        secret_word (SecretWord): The game's secret word.
+        parachute  (Parachute): The game's parachute.
+        terminal_service (TerminalService): For getting and displaying information on the terminal.
         is_playing (boolean): Whether or not to keep playing.
-        seeker (Seeker): The game's seeker.
-        terminal_service: For getting and displaying information on the terminal.
+        guess (str/input): Stores the player's guess. 
     """
 
     def __init__(self):
@@ -23,10 +23,9 @@ class Director:
             self (Director): an instance of Director.
         """
         self._secret_word = SecretWord()
-        self._is_playing = True
         self._parachute = Parachute()
-        # self._player = Player()
         self._terminal_service = TerminalService()
+        self._is_playing = True
         self._guess = ""
         
     def start_game(self):
@@ -42,7 +41,7 @@ class Director:
             self._end_game()
 
     def _get_inputs(self):
-        """THE COMMENTS HERE.
+        """Prin the secret word and ask the user to guess a letter.
 
         Args:
             self (Director): An instance of Director.
@@ -52,7 +51,8 @@ class Director:
         print()
         
     def _do_updates(self):
-        """THE COMMENTS HERE.
+        """Checks if the user's guess is the secret word. If so, show the secret word when the user
+        guesses correctly.
 
         Args:
             self (Director): An instance of Director.
@@ -60,7 +60,11 @@ class Director:
         self._secret_word.guess_word(self._guess)
         
     def _do_outputs(self):
-        """THE COMMENTS HERE.
+        """Shows the secret word after the users guesses a letter.
+        Shows the parachute
+
+        Check is the user guesses correctly or incorrectly. If the guess is wrong, cut lines
+        on the parachute.
 
         Args:
             self (Director): An instance of Director.
@@ -70,10 +74,17 @@ class Director:
         write_parachute = self._parachute.get_parachute(self._secret_word)
         self._terminal_service.write_text(write_parachute)
 
-        # if self._parachute.cut_parachute():
-        #     self._is_playing = False
     
     def _end_game(self):
+        """Ends the game when the user guess the secret word or when the
+        parachute is entirely cut off.
+
+        Args:
+            self (Director): An instance of Director.
+        """
 
         if self._secret_word.guessed_word():
+            self._is_playing = False
+        
+        elif self._parachute.cut_parachute(self._secret_word):
             self._is_playing = False
