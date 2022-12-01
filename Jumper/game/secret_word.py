@@ -65,7 +65,7 @@ class SecretWord:
             self._wrong_guesses += 1
 
 
-    def guessed_word(self):
+    def guessed_word(self, get_parachute):
         """Check if the user guessed the secret word.
 
         Args:
@@ -75,5 +75,6 @@ class SecretWord:
         """
         if self._random_word == "_" * self._length:
             print(self._display)
+            print(get_parachute)
             print("You guessed it!")
             return (self._random_word * self._length)

@@ -98,6 +98,7 @@ class Parachute:
         """
 
         if secret_word._wrong_guesses == 4:
+            print(secret_word._display)
             print(self.get_parachute(secret_word))
             print("Your parachute was cut off, you lost.")
             return (secret_word._wrong_guesses == 4)
