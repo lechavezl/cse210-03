@@ -86,5 +86,5 @@ class Director:
         if self._secret_word.guessed_word(self._parachute.get_parachute(self._secret_word)):
             self._is_playing = False
         
-        elif self._parachute.cut_parachute(self._secret_word, display):
+        elif self._parachute.cut_parachute(self._secret_word):
             self._is_playing = False
